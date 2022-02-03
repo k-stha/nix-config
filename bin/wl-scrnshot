@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -euf
+
+SCREENSHOT_DIR="${HOME}/Screenshots/"
+SCREENSHOT="${SCREENSHOT_DIR}""$(date "+%Y-%m-%dT%H:%M:%S.%NZ")".png
+SELECT=0
+
+[ ! -d "${SCREENSHOT_DIR}" ] && mkdir -p "${SCREENSHOT_DIR}"
+
+while [ $# -gt 0 ]; do
+    case "${1}" in
+        -h|--help)
+            printf "%s\n" "Usage: $(basename "${0}") [OPTION]
+Options:
+  -h, --help    Print the help menu
+  -s, --select  Select a region to screenshot"
+            exit 0
+            ;;
+        -s|--select)
+            SELECT=1
+            shift
+            ;;
+        *)
+            printf "%s\n" "Invalid parameter: ${1}"
+            exit 1
+            ;;
+    esac
+done
+
+if [ "${SELECT}" = 1 ]; then
+    grim -g "$(slurp)" "${SCREENSHOT}"
+else
+    grim "${SCREENSHOT}"
+fi
