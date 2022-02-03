@@ -22,7 +22,7 @@ Options:
             shift
             ;;
         *)
-            printf "%s\n" "Invalid parameter: ${1}"
+            printf "%s\n" "Invalid parameter: ${1}" >&2
             exit 1
             ;;
     esac
