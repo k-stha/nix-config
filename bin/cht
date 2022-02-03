@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -ef
+
+if [ -z "${1}" ]; then
+    echo "Please provide something to search!"
+    exit 1
+fi
+
+QUERY="$(echo "${@}" | sed -E 's/ +/\+/g')"
+
+curl --tlsv1.3 --proto =https https://cheat.sh/"${QUERY}"
