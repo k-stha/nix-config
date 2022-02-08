@@ -21,6 +21,8 @@ set ignorecase smartcase
 set hidden
 set omnifunc=syntaxcomplete#Complete
 
+highlight Number ctermfg=white guifg=white
+highlight String ctermfg=white guifg=white
 highlight Visual ctermfg=black ctermbg=white guifg=black guibg=white
 highlight Pmenu ctermfg=white ctermbg=DarkMagenta guifg=black guibg=Magenta
 highlight PmenuSel ctermfg=white ctermbg=black guifg=white guibg=black
@@ -42,6 +44,7 @@ nnoremap <silent> <Leader>ds :%s/\s\+$//e<CR>:nohlsearch<CR>``
 
 nnoremap <silent> <Leader>r :nohlsearch<CR>
 nnoremap <Leader>b :buffers<CR>:
+nnoremap <Leader>m :marks<CR>
 
 tnoremap <Esc> <C-\><C-n>
 
@@ -50,3 +53,8 @@ nnoremap <Leader>fi 1G=G``
 
 " Format the document according to the value of textwidth
 nnoremap <Leader>fw 1GgqG``
+
+nnoremap <F2> :lnext<CR>
+nnoremap <F3> :lprev<CR>
+nnoremap <S-F2> :cnext<CR>
+nnoremap <S-F3> :cprev<CR>
