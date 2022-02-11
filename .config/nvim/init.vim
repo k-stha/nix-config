@@ -58,3 +58,9 @@ nnoremap <F2> :lnext<CR>
 nnoremap <F3> :lprev<CR>
 nnoremap <S-F2> :cnext<CR>
 nnoremap <S-F3> :cprev<CR>
+
+if has('win32')
+  source $VIMRUNTIME\plugin\matchparen.vim
+else
+  source $VIMRUNTIME/plugin/matchparen.vim
+endif

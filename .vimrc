@@ -1,7 +1,8 @@
-" For filetype configurations, copy the folder "$HOME/.config/nvim/after/"
-" inside "$HOME/.vim/" directory
-
-source ~/.config/nvim/init.vim
+if has('win32')
+  source $HOME\AppData\Local\nvim\init.vim
+else
+  source $HOME/.config/nvim/init.vim
+endif
 
 syntax on
 set nocompatible
