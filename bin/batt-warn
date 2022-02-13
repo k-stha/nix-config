@@ -14,7 +14,7 @@ BATTERY_CAPACITY="$(cat /sys/class/power_supply/${BATTERY}/capacity)"
 BATTERY_STATUS="$(cat /sys/class/power_supply/${BATTERY}/status)"
 
 if [ "${BATTERY_CAPACITY}" -le 11 ] && [ "${BATTERY_STATUS}" = "Discharging" ]; then
-    notify-send -u critical "BATTERY CRITICALLY LOW!" "Current Battery Level is ${BATTERY_CAPACITY}"
+    notify-send -u critical "BATTERY CRITICALLY LOW!" "Current Battery Level is ${BATTERY_CAPACITY}%"
 elif [ "${BATTERY_CAPACITY}" -ge 100 ] && [ "${BATTERY_STATUS}" = "Full" ]; then
     notify-send "BATTERY FULLY CHARGED!" "Unplug the power supply"
 elif [ "${BATTERY_STATUS}" = "Unknown" ]; then
