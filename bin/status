@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+# Print the network and battery status
+
+set -euf
+
+BATTERY="BAT1"
+NET_STATUS=""
+
+BATTERY_CAPACITY="$(cat /sys/class/power_supply/${BATTERY}/capacity)"
+BATTERY_STATUS="$(cat /sys/class/power_supply/${BATTERY}/status)"
+network_interfaces="$(find /sys/class/net/ -maxdepth 1 -lname '*virtual*' -prune -o -printf '%P\n')"
+
+for interface in ${network_interfaces}; do
+
+    STATE="$(cat /sys/class/net/"${interface}"/operstate)"
+
+    if [ "${STATE}" = "up" ]; then
+        NET_STATUS="Connected"
+        break
+    elif [ "${STATE}" = "unknown" ]; then
+        NET_STATUS="Unknown"
+    elif [ "${STATE}" = "down" ] && [ "${NET_STATUS}" != "Unknown" ]; then
+        NET_STATUS="Disconnected"
+    fi
+
+done
+
+printf "%s\n" "N: ${NET_STATUS} | ${BATTERY_CAPACITY}% | ${BATTERY_STATUS} "
