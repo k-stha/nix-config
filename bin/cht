@@ -7,6 +7,6 @@ if [ -z "${1}" ]; then
     exit 1
 fi
 
-QUERY="$(echo "${@}" | sed -E 's/ +/\+/g')"
+QUERY="$(printf "%s" "$*" | sed -E 's/ +/\+/g')"
 
 curl --silent --tlsv1.3 --proto =https https://cheat.sh/"${QUERY}"
