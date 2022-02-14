@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# Print the network and battery status
+# Print the battery status
 
 set -euf
 
