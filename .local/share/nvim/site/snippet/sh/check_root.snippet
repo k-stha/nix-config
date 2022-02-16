@@ -1,0 +1,2 @@
+# Exit if the script is run without root privileges
+[ "$(id -u)" -ne 0 ] && die "Please run this script as root!"

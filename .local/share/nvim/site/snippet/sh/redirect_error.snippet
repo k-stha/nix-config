@@ -1,0 +1,7 @@
+# Redirect error message to stderr.
+# Arguments and Variables:
+#     $*: Error Message
+error()
+{
+    printf "%s\n" "$*" >&2
+}

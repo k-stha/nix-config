@@ -1,0 +1,15 @@
+SCRIPT="${0##*/}"
+
+# Print help menu.
+# Arguments and Variables:
+#     ${SCRIPT}: Name of the script
+
+help()
+{
+    cat <<EOF
+Usage: ${SCRIPT} [OPTION...]
+
+Options:
+  -h, --help        Display this help and exit
+EOF
+}
