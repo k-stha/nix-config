@@ -2,8 +2,34 @@
 
 set -euf
 
+SCRIPT="${0##*/}"
+
+# Print help menu.
+# Arguments and Variables:
+#     ${SCRIPT}: Name of the script
+
+help()
+{
+    cat <<EOF
+Usage: ${SCRIPT} [OPTION...]
+
+Options:
+  -h, --help        Display this help and exit
+  -s, --select      Select a region to screenshot"
+EOF
+}
+
+# Redirect error message to stderr and exit with error code.
+# Arguments and Variables:
+#     $*: Error Message
+die()
+{
+    printf "%s\n" "$*" >&2
+    exit 1
+}
+
 SCREENSHOT_DIR="${HOME}/Screenshots/"
-SCREENSHOT="${SCREENSHOT_DIR}""$(date "+%Y-%m-%dT%H:%M:%S.%NZ")".png
+SCREENSHOT="${SCREENSHOT_DIR}""$(date "+%Y-%m-%dT%H_%M_%S_%NZ")".png
 SELECT=0
 
 [ ! -d "${SCREENSHOT_DIR}" ] && mkdir -p "${SCREENSHOT_DIR}"
@@ -11,10 +37,7 @@ SELECT=0
 while [ $# -gt 0 ]; do
     case "${1}" in
         -h|--help)
-            printf "%s\n" "Usage: $(basename "${0}") [OPTION]
-Options:
-  -h, --help    Print the help menu
-  -s, --select  Select a region to screenshot"
+            help
             exit 0
             ;;
         -s|--select)
@@ -22,8 +45,7 @@ Options:
             shift
             ;;
         *)
-            printf "%s\n" "Invalid parameter: ${1}" >&2
-            exit 1
+            die "Invalid parameter: ${1}"
             ;;
     esac
 done
