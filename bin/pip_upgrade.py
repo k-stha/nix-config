@@ -16,7 +16,7 @@ def create_dir(directory):
         os.makedirs(directory)
 
 
-PIP="pip3"
+PIP = "pip3"
 
 HOME = os.path.expanduser("~")
 
