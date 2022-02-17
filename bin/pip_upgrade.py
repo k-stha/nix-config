@@ -39,4 +39,4 @@ with open(LOGFILE, "a", encoding="utf-8") as log:
     log.write(pkglist.decode("utf-8"))
 log.close()
 
-call(PIP + "install --upgrade " + " ".join(packages), shell=True)
+call(PIP + " install --upgrade " + " ".join(packages), shell=True)
