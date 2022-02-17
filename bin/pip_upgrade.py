@@ -27,7 +27,7 @@ else:
     LOGDIR = HOME + "/.cache/pip_upgrade/"
     create_dir(LOGDIR)
 
-LOGFILE = LOGDIR + "prev_pkg_versions.log"
+LOGFILE = LOGDIR + str(datetime.now().strftime("%Y-%m-%dT%H_%M_%SZ")) + ".log"
 
 # pylint: disable-next=not-an-iterable
 packages = [package.project_name for package in working_set]
@@ -35,7 +35,6 @@ packages = [package.project_name for package in working_set]
 pkglist = run([PIP, "freeze", "--all"], capture_output=True, check=True).stdout
 
 with open(LOGFILE, "a", encoding="utf-8") as log:
-    log.write("-" * 26 + "\n" + str(datetime.now()) + "\n" + "-" * 26 + "\n")
     log.write(pkglist.decode("utf-8"))
 log.close()
 
