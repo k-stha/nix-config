@@ -7,7 +7,6 @@ SCRIPT="${0##*/}"
 # Print help menu.
 # Arguments and Variables:
 #     ${SCRIPT}: Name of the script
-
 help()
 {
     cat <<EOF
@@ -34,7 +33,7 @@ SELECT=0
 
 [ ! -d "${SCREENSHOT_DIR}" ] && mkdir -p "${SCREENSHOT_DIR}"
 
-while [ $# -gt 0 ]; do
+while [ "$#" -gt 0 ]; do
     case "${1}" in
         -h|--help)
             help
