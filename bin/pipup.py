@@ -21,10 +21,10 @@ PIP = "pip3"
 HOME = os.path.expanduser("~")
 
 if system() == "Windows":
-    LOGDIR = HOME + "\\AppData\\Local\\pip_upgrade\\"
+    LOGDIR = HOME + "\\AppData\\Local\\pipup\\"
     create_dir(LOGDIR)
 else:
-    LOGDIR = HOME + "/.cache/pip_upgrade/"
+    LOGDIR = HOME + "/.cache/pipup/"
     create_dir(LOGDIR)
 
 LOGFILE = LOGDIR + str(datetime.now().strftime("%Y-%m-%dT%H_%M_%SZ")) + ".log"
