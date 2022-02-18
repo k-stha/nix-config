@@ -13,6 +13,7 @@ nnoremap <Leader>sd  :execute "read "  . SNIPPET_DIR . "die.snippet"<CR>
 nnoremap <Leader>sf  :execute "read "  . SNIPPET_DIR . "function.snippet"<CR>
 nnoremap <Leader>sh  :execute "read "  . SNIPPET_DIR . "help.snippet"<CR>
 nnoremap <Leader>so  :execute "read "  . SNIPPET_DIR . "options.snippet"<CR>
+nnoremap <Leader>sqa :execute "read "  . SNIPPET_DIR . "quit_if_no_args.snippet"<CR>
 nnoremap <Leader>se  :execute "read "  . SNIPPET_DIR . "redirect_error.snippet"<CR>
 nnoremap <Leader>srd :execute "read "  . SNIPPET_DIR . "required_dependancies.snippet"<CR>
 nnoremap <Leader>ss  :execute "0read " . SNIPPET_DIR . "start.snippet"<CR>

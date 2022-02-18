@@ -1,11 +1,19 @@
 #!/usr/bin/env sh
 
-set -ef
+# Search for cheat sheets using curl
 
-if [ -z "${1}" ]; then
-    echo "Please provide something to search!"
+set -euf
+
+# Redirect error message to stderr and exit with error code.
+# Arguments and Variables:
+#     $*: Error Message
+die()
+{
+    printf "%s\n" "$*" >&2
     exit 1
-fi
+}
+
+[ "$#" -eq 0 ] && die "Please provide something to search!"
 
 QUERY="$(printf "%s" "$*" | sed -E 's/ +/\+/g')"
 
