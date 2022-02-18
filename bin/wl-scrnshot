@@ -9,13 +9,11 @@ SCRIPT="${0##*/}"
 #     ${SCRIPT}: Name of the script
 help()
 {
-    cat <<EOF
-Usage: ${SCRIPT} [OPTION...]
+    printf "%s\n" "Usage: ${SCRIPT} [OPTION...]
 
 Options:
   -h, --help        Display this help and exit
   -s, --select      Select a region to screenshot"
-EOF
 }
 
 # Redirect error message to stderr and exit with error code.
