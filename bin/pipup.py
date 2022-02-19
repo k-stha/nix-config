@@ -27,15 +27,15 @@ else:
     LOGDIR = HOME + "/.cache/pipup/"
     create_dir(LOGDIR)
 
-LOGFILE = LOGDIR + str(datetime.now().strftime("%Y-%m-%dT%H_%M_%SZ")) + ".log"
-
-# pylint: disable-next=not-an-iterable
-packages = [package.project_name for package in working_set]
+LOGFILE = LOGDIR + str(datetime.now().strftime("%Y-%m-%dT%H_%M_%SZ")) + ".txt"
 
 pkglist = run([PIP, "freeze", "--all"], capture_output=True, check=True).stdout
 
-with open(LOGFILE, "a", encoding="utf-8") as log:
+with open(LOGFILE, "w", encoding="utf-8") as log:
     log.write(pkglist.decode("utf-8"))
 log.close()
 
-run(PIP + " install --upgrade " + " ".join(packages), shell=True)
+# pylint: disable-next=not-an-iterable
+args = [PIP, "install", "--upgrade"] + [pkg.project_name for pkg in working_set]
+
+run(args, check=True)
