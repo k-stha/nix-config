@@ -4,10 +4,10 @@ set -euf
 
 SCRIPT="${0##*/}"
 
-# Print help menu.
+# Display help menu.
 # Arguments and Variables:
 #     ${SCRIPT}: Name of the script
-help()
+display_help()
 {
     printf "%s\n" "Usage: ${SCRIPT} [OPTION...]
 
@@ -34,7 +34,7 @@ SELECT=0
 while [ "$#" -gt 0 ]; do
     case "${1}" in
         -h|--help)
-            help
+            display_help
             exit 0
             ;;
         -s|--select)
