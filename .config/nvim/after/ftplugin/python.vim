@@ -1,5 +1,5 @@
 setlocal softtabstop=4 shiftwidth=4
-setlocal colorcolumn=80
+setlocal colorcolumn=100
 
 if has('win32') && has('nvim')
   source $HOME\AppData\Local\nvim-data\site\plugin\python\linter.vim

@@ -19,10 +19,10 @@ function! UsePythonLinter()
 
   if option == 1
     setlocal makeprg=pylint\ --enable-all-extensions\ --score=n\ --persistent=n\
-          \ --jobs=0\ --max-line-length=79\ --expected-line-ending-format=LF\
+          \ --jobs=0\ --max-line-length=99\ --expected-line-ending-format=LF\
           \ --notes=TODO\ --check-quote-consistency=y
   elseif option == 2
-    setlocal makeprg=flake8\ --doctests\ --max-complexity\ 10
+    setlocal makeprg=flake8\ --doctests\ --max-line-length\ 99\ --max-complexity\ 10
   else
     echo "Linter not on the list!"
     return
