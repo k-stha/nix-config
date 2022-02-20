@@ -1,8 +1,7 @@
 # Redirect error message to stderr and exit with error code.
 # Arguments and Variables:
 #     $*: Error Message
-die()
-{
+die() {
     printf "%s\n" "$*" >&2
     exit 1
 }
