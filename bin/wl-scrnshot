@@ -11,8 +11,8 @@ display_help() {
     printf "%s\n" "Usage: ${SCRIPT} [OPTION...]
 
 Options:
-  -h, --help        Display this help and exit
-  -s, --select      Select a region to screenshot"
+  -h, --help            Display this help and exit
+  -s, --select          Select a region to screenshot"
 }
 
 # Redirect error message to stderr and exit with error code.
