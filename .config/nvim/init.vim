@@ -23,6 +23,7 @@ set omnifunc=syntaxcomplete#Complete
 
 highlight Number ctermfg=white guifg=white
 highlight String ctermfg=white guifg=white
+highlight SpellLocal ctermfg=black guifg=black
 highlight Visual ctermfg=black ctermbg=white guifg=black guibg=white
 highlight Pmenu ctermfg=white ctermbg=DarkMagenta guifg=black guibg=Magenta
 highlight PmenuSel ctermfg=white ctermbg=black guifg=white guibg=black
