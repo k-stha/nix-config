@@ -33,7 +33,6 @@ pkglist = run([PIP, "freeze", "--all"], capture_output=True, check=True).stdout
 
 with open(LOGFILE, "w", encoding="utf-8") as log:
     log.write(pkglist.decode("utf-8"))
-log.close()
 
 # pylint: disable-next=not-an-iterable
 args = [PIP, "install", "--upgrade"] + [pkg.project_name for pkg in working_set]
