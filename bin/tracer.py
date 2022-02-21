@@ -22,29 +22,24 @@ def display_help():
 ARG_LEN = len(sys.argv)
 
 if ARG_LEN == 1:
-    print("Please provide an argument or script name!")
+    print("Please provide an argument or script name!\n")
+    display_help()
     sys.exit(1)
 
 elif ARG_LEN > 2:
-    print("Please provide only one argument or script name!")
+    print("Please provide only one argument or script name!\n")
+    display_help()
     sys.exit(1)
 
-i = 0
-
-while i < ARG_LEN:
-    arg = sys.argv[i]
-
-    if arg in ("-h", "--help"):
-        display_help()
-        sys.exit()
-    else:
-        python_file = arg
-
-    i += 1
+if sys.argv[1] in ("-h", "--help"):
+    display_help()
+    sys.exit()
+else:
+    pyfile = sys.argv[1]
 
 PYTHON = "python3"
 
 DIRS = os.pathsep.join(sys.path)
-args = [PYTHON, "-m", "trace", "-m", "-g", "--ignore-dir", DIRS, "-t", python_file]
+args = [PYTHON, "-m", "trace", "-m", "-g", "--ignore-dir", DIRS, "-t", pyfile]
 
 run(args, check=True)
