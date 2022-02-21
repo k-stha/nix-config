@@ -22,12 +22,12 @@ def display_help():
 ARG_LEN = len(sys.argv)
 
 if ARG_LEN == 1:
-    print("Please provide an argument or script name!\n")
+    print("Please provide an argument or script name!\n", file=sys.stderr)
     display_help()
     sys.exit(1)
 
 elif ARG_LEN > 2:
-    print("Please provide only one argument or script name!\n")
+    print("Please provide only one argument or script name!\n", file=sys.stderr)
     display_help()
     sys.exit(1)
 
