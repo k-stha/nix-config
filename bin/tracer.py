@@ -7,31 +7,32 @@ import sys
 from subprocess import run
 
 
-def display_help():
-    """Display help."""
-    print(
+def return_help(script_name):
+    """Return help text."""
+    return (
         "Usage: "
-        + SCRIPT
+        + script_name
         + " [OPTION...] [FILE]\n\nOptions:\n"
         + "  -h, --help            Display this help and exit"
     )
 
 
 ARG_LEN = len(sys.argv)
-SCRIPT = os.path.basename(sys.argv[0])
+SCRIPT_NAME = os.path.basename(sys.argv[0])
+display_help = return_help(SCRIPT_NAME)
 
 if ARG_LEN == 1:
     print("Please provide an argument or script name!\n", file=sys.stderr)
-    display_help()
+    print(display_help)
     sys.exit(1)
 
 elif ARG_LEN > 2:
     print("Please provide only one argument or script name!\n", file=sys.stderr)
-    display_help()
+    print(display_help)
     sys.exit(1)
 
 if sys.argv[1] in ("-h", "--help"):
-    display_help()
+    print(display_help)
     sys.exit()
 else:
     pyfile = sys.argv[1]
