@@ -6,8 +6,6 @@ import os
 import sys
 from subprocess import run
 
-SCRIPT = os.path.basename(sys.argv[0])
-
 
 def display_help():
     """Display help."""
@@ -20,6 +18,7 @@ def display_help():
 
 
 ARG_LEN = len(sys.argv)
+SCRIPT = os.path.basename(sys.argv[0])
 
 if ARG_LEN == 1:
     print("Please provide an argument or script name!\n", file=sys.stderr)
@@ -37,7 +36,7 @@ if sys.argv[1] in ("-h", "--help"):
 else:
     pyfile = sys.argv[1]
 
-PYTHON = "python3"
+PYTHON = sys.executable
 
 DIRS = os.pathsep.join(sys.path)
 args = [PYTHON, "-m", "trace", "-m", "-g", "--ignore-dir", DIRS, "-t", pyfile]
