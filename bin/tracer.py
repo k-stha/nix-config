@@ -26,20 +26,16 @@ if ARG_LEN == 1:
     print(display_help)
     sys.exit(1)
 
-elif ARG_LEN > 2:
-    print("Please provide only one argument or script name!\n", file=sys.stderr)
-    print(display_help)
-    sys.exit(1)
-
-if sys.argv[1] in ("-h", "--help"):
+elif sys.argv[1] in {"-h", "--help"}:
     print(display_help)
     sys.exit()
+
 else:
-    pyfile = sys.argv[1]
+    pyfile = sys.argv[1:]
 
 PYTHON = sys.executable
 
 DIRS = os.pathsep.join(sys.path)
-args = [PYTHON, "-m", "trace", "-m", "-g", "--ignore-dir", DIRS, "-t", pyfile]
+args = [PYTHON, "-m", "trace", "-m", "-g", "--ignore-dir", DIRS, "-t"] + pyfile
 
 run(args, check=True)
