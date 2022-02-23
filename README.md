@@ -40,6 +40,10 @@ My configuration files and scripts
 
 - $HOME/.tmux.conf
 
+## .local
+
+- $HOME/.local
+
 ## bin
 
-- $HOME/bin/
+- $HOME/.local/bin/
