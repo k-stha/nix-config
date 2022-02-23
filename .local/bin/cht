@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+# Search for cheat sheets using curl
+
+set -euf
+
+# Redirect error message to stderr and exit with error code.
+# Arguments and Variables:
+#     $*: Error Message
+die() {
+    printf "%s\n" "$*" >&2
+    exit 1
+}
+
+[ "$#" -eq 0 ] && die "Please provide something to search!"
+
+QUERY="$(printf "%s" "$*" | sed -E 's/ +/\+/g')"
+
+curl --silent --tlsv1.3 --proto =https https://cheat.sh/"${QUERY}"
