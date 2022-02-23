@@ -42,7 +42,7 @@ My configuration files and scripts
 
 ## .local
 
-- $HOME/.local
+- $HOME/.local/
 
 ## bin
 
