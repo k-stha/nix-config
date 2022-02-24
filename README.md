@@ -31,7 +31,7 @@ My configuration files and scripts
 
 **For Windows:**
 
-- $HOME\_vimrc
+- $HOME\\_vimrc
 - $HOME\vimfiles\after\
 - $HOME\vimfiles\plugin\
 - $HOME\vimfiles\snippet\
