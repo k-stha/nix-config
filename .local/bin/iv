@@ -40,13 +40,13 @@ while [ "${#}" -gt 0 ]; do
             ;;
 
         -s|--slideshow)
-	    SLIDESHOW_ARGS="--image-display-duration=${2} --loop-file=no"
-	    shift 2
+            SLIDESHOW_ARGS="--image-display-duration=${2} --loop-file=no"
+            shift 2
             ;;
 
         *)
             FILES="${FILES} ${1}"
-	    shift
+            shift
             ;;
     esac
 done
