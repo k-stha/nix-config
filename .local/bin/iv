@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# View images using MPV
+
+set -euf
+
+SCRIPT="${0##*/}"
+
+# Print help menu.
+# Arguments and Variables:
+#     ${SCRIPT}: Name of the script
+
+display_help() {
+    printf "%s\n" "Usage: ${SCRIPT} [OPTION...] <image(s)>
+
+Options:
+  -h, --help        Display this help and exit
+  -s, --slideshow <n>  Slideshow and display a media for <n> seconds"
+}
+
+
+# Redirect error message to stderr and exit with error code.
+# Arguments and Variables:
+#     $*: Error Message
+die() {
+    printf "%s\n" "$*" >&2
+    exit 1
+}
+
+[ "$#" -eq 0 ] && die "Please provide an argument!"
+
+SLIDESHOW_ARGS=""
+FILES=""
+
+while [ "${#}" -gt 0 ]; do
+    case "${1}" in
+        -h|--help)
+            display_help
+            exit 0
+            ;;
+
+        -s|--slideshow)
+	    SLIDESHOW_ARGS="--image-display-duration=${2} --loop-file=no"
+	    shift 2
+            ;;
+
+        *)
+            FILES="${FILES} ${1}"
+	    shift
+            ;;
+    esac
+done
+
+# Disable shellcheck warning SC2086 because the arguments in the variables
+# should not be grouped together
+
+# shellcheck disable=SC2086
+mpv --config-dir="${HOME}/.config/mpv/iv/" ${SLIDESHOW_ARGS} ${FILES}
