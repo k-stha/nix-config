@@ -1,10 +1,10 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Run the status script every 5 seconds
 
 set -euf
 
 while :; do
-    "${HOME}"/bin/status
+    "${HOME}"/.local/bin/status
     sleep 5
 done
