@@ -15,24 +15,38 @@ def return_help(script_name):
     )
 
 
-ARG_LEN = len(sys.argv)
-SCRIPT_NAME = os.path.basename(sys.argv[0])
-display_help = return_help(SCRIPT_NAME)
+def check_args():
+    """Check the arguments provided."""
+    arg_len = len(sys.argv)
+    script_name = os.path.basename(sys.argv[0])
+    display_help = return_help(script_name)
 
-if ARG_LEN == 1:
-    print("Please provide an argument or script name!\n", file=sys.stderr)
-    print(display_help)
-    sys.exit(1)
+    if arg_len == 1:
+        print("Please provide an argument or script name!\n", file=sys.stderr)
+        print(display_help)
+        sys.exit(1)
 
-elif sys.argv[1] in {"-h", "--help"}:
-    print(display_help)
-    sys.exit()
+    elif sys.argv[1] in {"-h", "--help"}:
+        print(display_help)
+        sys.exit()
 
-else:
-    pyfile = sys.argv[1:]
 
-PYTHON = sys.executable
-DIRS = os.pathsep.join(sys.path)
-args = [PYTHON, "-m", "trace", "-m", "-g", "--ignore-dir", DIRS, "-t"] + pyfile
+def run_trace(pyexec, dirs, pyfile):
+    """Run the trace module."""
+    args = [pyexec, "-m", "trace", "-m", "-g", "--ignore-dir", dirs, "-t"] + pyfile
+    run(args, check=True)
 
-run(args, check=True)
+
+def main():
+    """Execute all the required functions."""
+    check_args()
+
+    python_executable = sys.executable
+    dirs_to_exclude = os.pathsep.join(sys.path)
+    python_test_file = sys.argv[1:]
+
+    run_trace(python_executable, dirs_to_exclude, python_test_file)
+
+
+if __name__ == "__main__":
+    main()
