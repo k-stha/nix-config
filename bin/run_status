@@ -5,6 +5,6 @@
 set -euf
 
 while :; do
-    "${HOME}"/.local/bin/status
+    "${HOME}"/bin/status
     sleep 5
 done
