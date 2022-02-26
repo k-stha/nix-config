@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """Trace a python script's execution."""
 
 import os
