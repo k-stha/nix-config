@@ -7,7 +7,7 @@ while IFS="|" read -r cmd pkg; do
         REQ_UNMET_DEP_COUNT="$((REQ_UNMET_DEP_COUNT + 1))"
     fi
 done <<EOF
-
+command_name|package_name
 EOF
 
 [ "${REQ_UNMET_DEP_COUNT}" -gt 0 ] && exit 1
