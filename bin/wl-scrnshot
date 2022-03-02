@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Take screenshots on wayland.
+# Take screenshots on wayland based on wlroots.
 
 set -euf
 
@@ -11,6 +11,7 @@ SCRIPT="${0##*/}"
 #     ${SCRIPT}: Name of the script
 display_help() {
     printf "%s\n" "Usage: ${SCRIPT} [OPTION...]
+Take screenshots on wlroots-based compositors
 
 Options:
   -h, --help            Display this help and exit

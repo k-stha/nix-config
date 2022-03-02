@@ -12,6 +12,7 @@ SCRIPT="${0##*/}"
 
 display_help() {
     printf "%s\n" "Usage: ${SCRIPT} [OPTION...] <image(s)>
+Display images using mpv
 
 Options:
   -h, --help        Display this help and exit
