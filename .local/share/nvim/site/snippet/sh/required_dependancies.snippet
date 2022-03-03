@@ -4,7 +4,7 @@ while IFS="|" read -r cmd msg; do
     if ! command -v "${cmd}" >/dev/null 2>&1; then
         [ -n "${msg}" ] && msg=" ${msg}" || msg=""
         error "The command '${cmd}' not found!${msg}"
-        REQ_UNMET_DEP_COUNT="$(( REQ_UNMET_DEP_COUNT + 1 ))"
+        REQ_UNMET_DEP_COUNT=$(( REQ_UNMET_DEP_COUNT + 1 ))
     fi
 done <<EOF
 command_name|message_to_user
