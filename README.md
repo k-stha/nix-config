@@ -46,4 +46,4 @@ My configuration files and scripts
 
 ## bin
 
-- $HOME/.local/bin/
+- $HOME/bin/
