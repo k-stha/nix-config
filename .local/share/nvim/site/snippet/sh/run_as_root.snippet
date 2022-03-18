@@ -1,0 +1,11 @@
+if [ "$(id -u)" -ne 0 ]; then
+    if command -v sudo >/dev/null 2>&1; then
+        sudo "${0}" "$@"
+        exit $?
+    elif command -v doas >/dev/null 2>&1; then
+        doas "${0}" "$@"
+        exit $?
+    else
+        die "This script must be executed as root!"
+    fi
+fi
