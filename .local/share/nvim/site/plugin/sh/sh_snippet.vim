@@ -16,4 +16,5 @@ nnoremap <Leader>so  :execute "read "  . SNIPPET_DIR . "options.snippet"<CR>
 nnoremap <Leader>sqa :execute "read "  . SNIPPET_DIR . "quit_if_no_args.snippet"<CR>
 nnoremap <Leader>se  :execute "read "  . SNIPPET_DIR . "redirect_error.snippet"<CR>
 nnoremap <Leader>srd :execute "read "  . SNIPPET_DIR . "required_dependancies.snippet"<CR>
+nnoremap <Leader>srs :execute "read "  . SNIPPET_DIR . "read_secret.snippet"<CR>
 nnoremap <Leader>ss  :execute "0read " . SNIPPET_DIR . "start.snippet"<CR>
