@@ -1,0 +1,8 @@
+while IFS="|" read -r cmd msg; do
+    if ! command -v "${cmd}" >/dev/null 2>&1; then
+        [ -n "${msg}" ] && msg=" ${msg}" || msg=""
+        error "The command '${cmd}' not found!${msg}"
+    fi
+done <<EOF
+command_name|message_to_user
+EOF

@@ -1,13 +1,10 @@
 REQ_UNMET_DEP_COUNT=0
 
-while IFS="|" read -r cmd msg; do
+for dependancy in command1 command2; do
     if ! command -v "${cmd}" >/dev/null 2>&1; then
-        [ -n "${msg}" ] && msg=" ${msg}" || msg=""
-        error "The command '${cmd}' not found!${msg}"
+        error "The command '${cmd}' not found!"
         REQ_UNMET_DEP_COUNT=$(( REQ_UNMET_DEP_COUNT + 1 ))
     fi
-done <<EOF
-command_name|message_to_user
-EOF
+done
 
 [ "${REQ_UNMET_DEP_COUNT}" -gt 0 ] && exit 1
