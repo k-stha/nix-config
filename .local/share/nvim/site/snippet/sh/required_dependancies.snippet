@@ -1,6 +1,6 @@
 REQ_UNMET_DEP_COUNT=0
 
-for dependancy in command1 command2; do
+for cmd in command1 command2; do
     if ! command -v "${cmd}" >/dev/null 2>&1; then
         error "The command '${cmd}' not found!"
         REQ_UNMET_DEP_COUNT=$(( REQ_UNMET_DEP_COUNT + 1 ))
