@@ -8,9 +8,9 @@ My Linux related configuration files and scripts
 
 - $HOME/.tmux.conf
 
-## .local
+## .config
 
-- $HOME/.local/
+- $HOME/.config/
 
 ## bin
 
