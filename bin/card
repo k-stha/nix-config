@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Automatically resume download if failed using cURL
+
+set -euf
+
+while :; do
+    curl --location --remote-name-all --continue-at - "${@}" && break
+    sleep 5
+done
