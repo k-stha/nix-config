@@ -1,0 +1,67 @@
+#!/bin/sh
+
+# Run Wayland-based Desktop Environment and/or Window Manager
+
+set -eu
+
+
+# Redirect error message to stderr and exit with specified exit code.
+# Arguments and Variables:
+#     ${1}: Exit Status
+#     ${2}: Error Message
+die() {
+    printf "%s\n" "${2}" >&2
+    exit "${1}"
+}
+
+
+# Display help message
+#     ${1}: Name of the script
+display_help() {
+    printf "%s" "Usage: ${1} [OPTION] [DE/WM]
+Run Wayland-based Desktop Environment or Window Manager
+
+Options:
+  -h, --help            Display this help menu
+
+optional arguments:
+  DE/WM      Run the window manager or desktop environment
+             Valid options are: sway, plasma (Default: sway)
+"
+}
+
+
+[ "$#" -gt 1 ] && die 1 "Please provide only one argument!"
+
+export XDG_SESSION_TYPE=wayland
+export SDL_VIDEODRIVER=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+export MOZ_ENABLE_WAYLAND=1    # As Firefox uses X if Xwayland is installed
+
+# For QT-based applications, you will need a package installed depending on
+# the distribution as mentioned below:
+#     qtwayland5 for Debian and Debian based distributions
+#     qt5-wayland for Arch Linux and Arch Linux based distributions
+
+script_name="swl"
+session="${1:-sway}"
+
+case "${session}" in
+    -h|--help)
+        display_help "${script_name}"
+        exit 0
+        ;;
+    sway)
+        export XDG_CURRENT_DESKTOP=sway
+        exec dbus-run-session sway
+        ;;
+    plasma)
+        exec dbus-run-session startplasma-wayland
+        ;;
+    -*)
+        die 1 "Invalid parameter: ${1}"
+        ;;
+    *)
+        exec "${1}"
+        ;;
+esac
