@@ -4,13 +4,22 @@
 
 set -euf
 
-SCRIPT="${0##*/}"
+
+# Redirect error message to stderr and exit with error code.
+# Arguments and Variables:
+#     ${1}: Exit Status
+#     ${2}: Error Message
+die() {
+    printf "%s\n" "${2}" >&2
+    exit "${1}"
+}
+
 
 # Display help menu.
 # Arguments and Variables:
-#     ${SCRIPT}: Name of the script
+#     ${1}: Name of the script
 display_help() {
-    printf "%s\n" "Usage: ${SCRIPT} [OPTION...]
+    printf "%s\n" "Usage: ${1} [OPTION...]
 Take screenshots on wlroots-based compositors
 
 Options:
@@ -18,24 +27,18 @@ Options:
   -s, --select          Select a region to screenshot"
 }
 
-# Redirect error message to stderr and exit with error code.
-# Arguments and Variables:
-#     $*: Error Message
-die() {
-    printf "%s\n" "$*" >&2
-    exit 1
-}
 
-SCREENSHOT_DIR="${HOME}/Pictures/Screenshots/"
-SCREENSHOT="${SCREENSHOT_DIR}""$(date "+%Y-%m-%dT%H_%M_%S_%NZ")".png
+script_name="wl-screenshot"
+screenshot_dir="${HOME}/Pictures/Screenshots/"
+screenshot="${screenshot_dir}""$(date "+%Y-%m-%dT%H_%M_%S_%NZ")".png
 SELECT=0
 
-[ ! -d "${SCREENSHOT_DIR}" ] && mkdir -p "${SCREENSHOT_DIR}"
+[ ! -d "${screenshot_dir}" ] && mkdir -p "${screenshot_dir}"
 
 while [ "$#" -gt 0 ]; do
     case "${1}" in
         -h|--help)
-            display_help
+            display_help "${script_name}"
             exit 0
             ;;
         -s|--select)
@@ -43,13 +46,13 @@ while [ "$#" -gt 0 ]; do
             shift
             ;;
         *)
-            die "Invalid parameter: ${1}"
+            die 1 "Invalid parameter: ${1}"
             ;;
     esac
 done
 
 if [ "${SELECT}" = 1 ]; then
-    grim -g "$(slurp)" "${SCREENSHOT}"
+    grim -g "$(slurp)" "${screenshot}"
 else
-    grim "${SCREENSHOT}"
+    grim "${screenshot}"
 fi
