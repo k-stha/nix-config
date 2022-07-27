@@ -39,16 +39,15 @@ def run_trace(pyexec, dirs, pyfile):
     run(args, check=True)
 
 
-def main():
-    """Execute all the required functions."""
+def main(argv):
+    """Start code execution."""
     check_args()
 
     python_executable = sys.executable
     dirs_to_exclude = os.pathsep.join(sys.path)
-    python_test_file = sys.argv[1:]
 
-    run_trace(python_executable, dirs_to_exclude, python_test_file)
+    run_trace(python_executable, dirs_to_exclude, argv)
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
