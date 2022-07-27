@@ -35,7 +35,7 @@ script_name="iv"
 slideshow_args=""
 files=""
 
-while [ "${#}" -gt 0 ]; do
+while [ "$#" -gt 0 ]; do
     case "${1}" in
         -h|--help)
             display_help "${script_name}"
