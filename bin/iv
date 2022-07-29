@@ -25,8 +25,8 @@ display_help() {
 Display images using mpv
 
 optional arguments:
-  -h, --help           Display this help and exit
-  -s, --slideshow <n>  Slideshow and display a media for <n> seconds"
+  -h, --help            Display this help and exit
+  -s, --slideshow <n>   Slideshow and display a media for <n> seconds"
 }
 
 
