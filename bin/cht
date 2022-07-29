@@ -4,15 +4,18 @@
 
 set -euf
 
+
 # Redirect error message to stderr and exit with error code.
 # Arguments and Variables:
-#     $*: Error Message
+#     ${1}: Exit Status
+#     ${2}: Error Message
 die() {
-    printf "%s\n" "$*" >&2
-    exit 1
+    printf "%s\n" "${2}" >&2
+    exit "${1}"
 }
 
-[ "$#" -eq 0 ] && die "Please provide something to search!"
+
+[ "$#" -eq 0 ] && die 1 "Please provide something to search!"
 
 QUERY="$(printf "%s" "$*" | sed -E 's/ +/\+/g')"
 

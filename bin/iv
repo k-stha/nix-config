@@ -20,11 +20,12 @@ die() {
 #     ${1}: Name of the script
 
 display_help() {
-    printf "%s\n" "Usage: ${1} [OPTION...] <image(s)>
+    printf "%s\n" "usage: ${1} [OPTION...] <image(s)>
+
 Display images using mpv
 
-Options:
-  -h, --help        Display this help and exit
+optional arguments:
+  -h, --help           Display this help and exit
   -s, --slideshow <n>  Slideshow and display a media for <n> seconds"
 }
 
@@ -38,8 +39,7 @@ files=""
 while [ "$#" -gt 0 ]; do
     case "${1}" in
         -h|--help)
-            display_help "${script_name}"
-            exit 0
+            display_help "${script_name}" && exit 0
             ;;
 
         -s|--slideshow)

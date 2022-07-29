@@ -19,10 +19,11 @@ die() {
 # Arguments and Variables:
 #     ${1}: Name of the script
 display_help() {
-    printf "%s\n" "Usage: ${1} [OPTION...]
+    printf "%s\n" "usage: ${1} [OPTION...]
+
 Take screenshots on wlroots-based compositors
 
-Options:
+optional arguments:
   -h, --help            Display this help and exit
   -s, --select          Select a region to screenshot"
 }
@@ -38,8 +39,7 @@ SELECT=0
 while [ "$#" -gt 0 ]; do
     case "${1}" in
         -h|--help)
-            display_help "${script_name}"
-            exit 0
+            display_help "${script_name}" && exit 0
             ;;
         -s|--select)
             SELECT=1

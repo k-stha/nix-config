@@ -18,15 +18,16 @@ die() {
 # Display help message
 #     ${1}: Name of the script
 display_help() {
-    printf "%s" "Usage: ${1} [OPTION] [DE/WM]
+    printf "%s" "usage: ${1} [OPTION] [DE/WM]
+
 Run Wayland-based Desktop Environment or Window Manager
 
-Options:
-  -h, --help            Display this help menu
-
-optional arguments:
+positional arguments:
   DE/WM      Run the window manager or desktop environment
              Valid options are: sway, plasma (Default: sway)
+
+optional arguments:
+  -h, --help            Display this help menu
 "
 }
 
@@ -48,8 +49,7 @@ session="${1:-sway}"
 
 case "${session}" in
     -h|--help)
-        display_help "${script_name}"
-        exit 0
+        display_help "${script_name}" && exit 0
         ;;
     sway)
         export XDG_CURRENT_DESKTOP=sway
